@@ -1,0 +1,64 @@
+/*Crear dos enlaces, uno para abrir una nueva ventana y uno para cerrarla. La nueva ventana mostrará este mensaje en una fuente grande
+ : ​”El ojo es la ventana a tu alma “. La nueva ventana se coloca en la esquina izquierda de la pantalla , será redimensionable , 
+ tendrá una barra de desplazamiento, y estará en primer plano. */
+
+ <!DOCTYPE html>
+ <html lang="es">
+ <head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Control de Ventana</title>
+ </head>
+ <body>
+     <a href="#" id="abrirVentana">Abrir nueva ventana</a> |
+     <a href="#" id="cerrarVentana">Cerrar ventana</a>
+ 
+     <script>
+         let nuevaVentana;
+ 
+         document.getElementById('abrirVentana').addEventListener('click', function (e) {
+             e.preventDefault(); // Evitar comportamiento por defecto del enlace
+             nuevaVentana = window.open('', '', 'width=400,height=300,left=0,top=0,scrollbars=yes,resizable=yes');
+             if (nuevaVentana) {
+                 nuevaVentana.document.write(`
+                     <!DOCTYPE html>
+                     <html lang="es">
+                     <head>
+                         <meta charset="UTF-8">
+                         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                         <title>Ventana Nueva</title>
+                         <style>
+                             body {
+                                 display: flex;
+                                 justify-content: center;
+                                 align-items: center;
+                                 height: 100vh;
+                                 margin: 0;
+                                 font-size: 24px;
+                                 font-family: Arial, sans-serif;
+                                 text-align: center;
+                             }
+                         </style>
+                     </head>
+                     <body>
+                         "El ojo es la ventana a tu alma"
+                     </body>
+                     </html>
+                 `);
+                 nuevaVentana.focus(); // Mantenerla en primer plano
+             } else {
+                 alert('No se pudo abrir la nueva ventana. Por favor, verifica las configuraciones de tu navegador.');
+             }
+         });
+ 
+         document.getElementById('cerrarVentana').addEventListener('click', function (e) {
+             e.preventDefault(); // Evitar comportamiento por defecto del enlace
+             if (nuevaVentana && !nuevaVentana.closed) {
+                 nuevaVentana.close();
+             } else {
+                 alert('La ventana ya está cerrada o no ha sido abierta.');
+             }
+         });
+     </script>
+ </body>
+ </html>

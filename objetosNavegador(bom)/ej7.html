@@ -1,0 +1,27 @@
+Crear un programa en cuyo título del documento aparezca el siguiente texto animado circularmente 
+(ver ​Ejemplo de texto animado circularmente​): ¡¡Sólo quedan 20 días de ofertas!!
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¡¡Sólo quedan 20 días de ofertas!!</title>
+    <script>
+        let texto = "¡¡Sólo quedan 20 días de ofertas!!";
+        let posicion = 0;
+
+        function animarTitulo() {
+            document.title = texto.substring(posicion) + texto.substring(0, posicion);
+            posicion = (posicion + 1) % texto.length;
+            setTimeout(animarTitulo, 200); // Cambiar el tiempo para ajustar la velocidad
+        }
+
+        // Iniciar la animación al cargar la página
+        animarTitulo();
+    </script>
+</head>
+<body>
+    <h1>Observa el título de la página para ver la animación.</h1>
+</body>
+</html>

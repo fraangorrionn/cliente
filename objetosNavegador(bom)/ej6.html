@@ -1,0 +1,97 @@
+Crea una página web que realice las siguientes funciones desde la página principal. Crea botones para cada realizar cada una de las siguientes opciones:
+	- Abrir ventana flotante
+	- Abrir ventana flotante y detenerla
+	- Cerrar ventana flotante
+	- Dar foco a la ventana flotante
+	- Quitar foco ventana nueva
+	- Scroll absoluto (0, 1000)
+Desde la ventana secundaria se podrá realizar:
+	- Mover absoluto (500, 150)
+	- Mover relativo (0,50)
+	- Redimensionar absoluto (500,500)
+	- Redimensionar relativo (-50, -50)
+
+    <!DOCTYPE html>
+    <html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Control de Ventana Flotante</title>
+    </head>
+    <body>
+        <button id="abrirVentana">Abrir ventana flotante</button>
+        <button id="detenerVentana">Abrir y detener ventana flotante</button>
+        <button id="cerrarVentana">Cerrar ventana flotante</button>
+        <button id="focoVentana">Dar foco a la ventana flotante</button>
+        <button id="quitarFocoVentana">Quitar foco de la ventana nueva</button>
+        <button id="scrollAbsoluto">Scroll absoluto (0, 1000)</button>
+    
+        <script>
+            let ventanaFlotante;
+    
+            document.getElementById('abrirVentana').addEventListener('click', () => {
+                ventanaFlotante = window.open('', '', 'width=400,height=300,left=100,top=100,scrollbars=yes');
+                if (ventanaFlotante) {
+                    ventanaFlotante.document.write(`
+                        <!DOCTYPE html>
+                        <html lang="es">
+                        <head>
+                            <meta charset="UTF-8">
+                            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                            <title>Ventana Flotante</title>
+                        </head>
+                        <body>
+                            <h1>Ventana Flotante</h1>
+                            <button onclick="window.moveTo(500, 150)">Mover absoluto (500, 150)</button>
+                            <button onclick="window.moveBy(0, 50)">Mover relativo (0, 50)</button>
+                            <button onclick="window.resizeTo(500, 500)">Redimensionar absoluto (500, 500)</button>
+                            <button onclick="window.resizeBy(-50, -50)">Redimensionar relativo (-50, -50)</button>
+                        </body>
+                        </html>
+                    `);
+                    ventanaFlotante.document.close();
+                } else {
+                    alert('No se pudo abrir la ventana flotante. Verifique las configuraciones del navegador.');
+                }
+            });
+    
+            document.getElementById('detenerVentana').addEventListener('click', () => {
+                ventanaFlotante = window.open('', '', 'width=400,height=300,left=100,top=100,scrollbars=yes');
+                if (ventanaFlotante) {
+                    ventanaFlotante.stop(); // Detiene la carga de la ventana
+                    ventanaFlotante.document.write('<h1>Ventana detenida</h1>');
+                    ventanaFlotante.document.close();
+                }
+            });
+    
+            document.getElementById('cerrarVentana').addEventListener('click', () => {
+                if (ventanaFlotante && !ventanaFlotante.closed) {
+                    ventanaFlotante.close();
+                } else {
+                    alert('La ventana ya está cerrada o no ha sido abierta.');
+                }
+            });
+    
+            document.getElementById('focoVentana').addEventListener('click', () => {
+                if (ventanaFlotante && !ventanaFlotante.closed) {
+                    ventanaFlotante.focus();
+                } else {
+                    alert('La ventana no está abierta.');
+                }
+            });
+    
+            document.getElementById('quitarFocoVentana').addEventListener('click', () => {
+                if (ventanaFlotante && !ventanaFlotante.closed) {
+                    window.focus(); // Da foco a la ventana principal
+                } else {
+                    alert('La ventana no está abierta.');
+                }
+            });
+    
+            document.getElementById('scrollAbsoluto').addEventListener('click', () => {
+                window.scrollTo(0, 1000); // Scroll absoluto a (0, 1000)
+            });
+        </script>
+    </body>
+    </html>
+    

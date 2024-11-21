@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Examen Tipo Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 10px;
+            background-color: #f5f5f5;
+        }
+
+        .question {
+            margin-bottom: 20px;
+        }
+
+        .answers label {
+            display: block;
+            margin: 5px 0;
+        }
+
+        .result {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #d9d9d9;
+            border-radius: 4px;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 8px;
+            margin-top: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            background-color: #fff;
+        }
+
+        button {
+            margin-top: 10px;
+            padding: 10px 15px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h1>Examen Tipo Test</h1>
+
+    <form id="quizForm">
+        <div class="question">
+            <h3>1. ¿Cuál es el planeta más cercano al Sol?</h3>
+            <div class="answers">
+                <label><input type="radio" name="pregunta1" value="Mercurio"> Mercurio</label>
+                <label><input type="radio" name="pregunta1" value="Venus"> Venus</label>
+                <label><input type="radio" name="pregunta1" value="Tierra"> Tierra</label>
+                <label><input type="radio" name="pregunta1" value="Marte"> Marte</label>
+            </div>
+        </div>
+
+        <div class="question">
+            <h3>2. ¿Cuál es la capital de Francia?</h3>
+            <div class="answers">
+                <label><input type="radio" name="pregunta2" value="Roma"> Roma</label>
+                <label><input type="radio" name="pregunta2" value="Madrid"> Madrid</label>
+                <label><input type="radio" name="pregunta2" value="París"> París</label>
+                <label><input type="radio" name="pregunta2" value="Londres"> Londres</label>
+            </div>
+        </div>
+
+        <button type="button" id="botonVerificar">Verificar Respuestas</button>
+    </form>
+
+    <div class="result">
+        <h3>Respuestas correctas:</h3>
+        <input type="text" id="respuestaCorrecta1" readonly placeholder="Respuesta de la pregunta 1">
+        <input type="text" id="respuestaCorrecta2" readonly placeholder="Respuesta de la pregunta 2">
+    </div>
+
+    <script src="ej4.js"></script>
+</body>
+</html>

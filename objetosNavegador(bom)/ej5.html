@@ -1,0 +1,29 @@
+/*Crear un programa que va a crear un reloj digital en el título. Utilice el método setInterval() para actualizar el
+título de la página una vez cada minuto con la hora actual. */
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reloj Digital</title>
+</head>
+<body>
+    <script>
+        function actualizarReloj() {
+            const ahora = new Date();
+            const horas = ahora.getHours().toString().padStart(2, '0');
+            const minutos = ahora.getMinutes().toString().padStart(2, '0');
+
+            // Actualizar el título de la página con la hora actual
+            document.title = `Hora actual: ${horas}:${minutos}`;
+        }
+
+        // Actualizar el reloj al cargar la página
+        actualizarReloj();
+
+        // Configurar la actualización del reloj cada minuto (60000 ms)
+        setInterval(actualizarReloj, 60000);
+    </script>
+</body>
+</html>

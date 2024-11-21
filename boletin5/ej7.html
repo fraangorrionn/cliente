@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Colores</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .form-container {
+            width: 300px;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            background-color: white;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        .form-container h1 {
+            margin-bottom: 15px;
+            font-size: 1.5em;
+            color: #333;
+        }
+
+        .color-options {
+            display: flex;
+            justify-content: space-around;
+            margin: 15px 0;
+        }
+
+        .color-options label {
+            font-size: 1em;
+            cursor: pointer;
+        }
+
+        input[type="submit"] {
+            padding: 10px 15px;
+            font-size: 1em;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container" id="form-container">
+        <h1>Elige un Color</h1>
+        <form id="colorForm">
+            <div class="color-options">
+                <label for="rojo">
+                    <input type="radio" name="color" id="rojo" value="red"> Rojo
+                </label>
+                <label for="azul">
+                    <input type="radio" name="color" id="azul" value="blue"> Azul
+                </label>
+                <label for="verde">
+                    <input type="radio" name="color" id="verde" value="green"> Verde
+                </label>
+            </div>
+            <input type="submit" value="Confirmar">
+        </form>
+    </div>
+
+    <script src="ej7.js"></script>
+</body>
+</html>

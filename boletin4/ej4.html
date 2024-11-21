@@ -1,0 +1,38 @@
+Realizar una función que pase una cantidad de Mbyte, Kbytes y bytes a bytes. Probadla en una página.
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conversión a Bytes</title>
+</head>
+<body>
+    <h1>Conversión de Mbytes, Kbytes y bytes a bytes</h1>
+    <label for="mb">Introduce Mbytes: </label>
+    <input type="number" id="mb" step="0.01" min="0"><br><br>
+    <label for="kb">Introduce Kbytes: </label>
+    <input type="number" id="kb" step="0.01" min="0"><br><br>
+    <label for="bytes">Introduce bytes: </label>
+    <input type="number" id="bytes" step="1" min="0"><br><br>
+    <button onclick="convertirABYtes()">Convertir a bytes</button>
+
+    <p id="resultado"></p>
+
+    <script>
+        function convertirCantidad(mb, kb, bytes) {
+            const bytesDesdeMb = mb * 1024 * 1024; // 1 MB = 1024 * 1024 bytes
+            const bytesDesdeKb = kb * 1024;        // 1 KB = 1024 bytes
+            return bytesDesdeMb + bytesDesdeKb + bytes;
+        }
+
+        function convertirABYtes() {
+            const mb = parseFloat(document.getElementById('mb').value) || 0;
+            const kb = parseFloat(document.getElementById('kb').value) || 0;
+            const bytes = parseInt(document.getElementById('bytes').value, 10) || 0;
+
+            const resultado = convertirCantidad(mb, kb, bytes);
+            document.getElementById('resultado').innerText = `Total en bytes: ${resultado}`;
+        }
+    </script>
+</body>
+</html>

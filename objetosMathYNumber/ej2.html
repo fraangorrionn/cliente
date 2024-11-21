@@ -1,0 +1,71 @@
+/*Un proyectil disparado a un ángulo ​A tiene un alcance horizontal ​R dado por la siguiente expresión:
+
+Siendo ​V la velocidad inicial y ​G = 9,8 m/seg. Calcúlese el alcance limitando los ángulos de 0 a 90 y ​V a valores positivos.
+ */
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alcance del Proyectil</title>
+</head>
+<body>
+    <h1>Calculadora de Alcance de un Proyectil</h1>
+    <label for="angle">Ángulo (grados, entre 0 y 90): </label>
+    <input type="number" id="angle" min="0" max="90"><br><br>
+    <label for="velocity">Velocidad inicial (m/s, valor positivo): </label>
+    <input type="number" id="velocity" min="0"><br><br>
+    <button onclick="calculateRange()">Calcular Alcance</button>
+
+    <script>
+        function calculateRange() {
+            const angle = parseFloat(document.getElementById('angle').value);
+            const velocity = parseFloat(document.getElementById('velocity').value);
+            const g = 9.8; // Aceleración debida a la gravedad en m/s^2
+
+            // Validación de los valores ingresados
+            if (isNaN(angle) || isNaN(velocity)) {
+                createResultMessage('Por favor, introduce valores válidos.');
+                return;
+            }
+
+            if (angle < 0 || angle > 90 || velocity <= 0) {
+                createResultMessage('El ángulo debe estar entre 0 y 90 grados y la velocidad debe ser positiva.');
+                return;
+            }
+
+            // Convertir el ángulo a radianes
+            const angleRad = angle * (Math.PI / 180);
+            // Fórmula para el alcance del proyectil
+            const range = (Math.pow(velocity, 2) * Math.sin(2 * angleRad)) / g;
+
+            createResultMessage(`El alcance del proyectil es: ${range.toFixed(2)} metros.`);
+        }
+
+        function createResultMessage(message) {
+            // Crear un elemento de resultado si no existe
+            let resultDiv = document.getElementById('resultMessage');
+            if (!resultDiv) {
+                resultDiv = document.createElement('div');
+                resultDiv.id = 'resultMessage';
+                resultDiv.style.position = 'fixed';
+                resultDiv.style.bottom = '20px';
+                resultDiv.style.right = '20px';
+                resultDiv.style.padding = '20px';
+                resultDiv.style.backgroundColor = '#f0f8ff';
+                resultDiv.style.border = '2px solid #333';
+                resultDiv.style.borderRadius = '10px';
+                document.body.appendChild(resultDiv);
+            }
+            // Mostrar el mensaje
+            resultDiv.innerText = message;
+            // Aplicar efecto "boom" mediante escalado simple
+            resultDiv.style.transform = 'scale(1.2)';
+            setTimeout(() => {
+                resultDiv.style.transform = 'scale(1)';
+            }, 500);
+        }
+    </script>
+</body>
+</html>
