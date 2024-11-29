@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Pedido de Café</title>
+    <script src="ej14.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 20px;
+        }
+        .form-container {
+            max-width: 400px;
+            margin: auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .form-container h2 {
+            margin-bottom: 20px;
+            text-align: center;
+            color: #333;
+        }
+        .form-group {
+            margin: 30px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input[type="text"], input[type="number"], button {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h2>Pedido de Café</h2>
+        <form>
+            <div class="form-group">
+                <label for="name">Nombre:</label>
+                <input type="text" id="name" name="name" placeholder="Ingresa tu nombre" required>
+            </div>
+            <div class="form-group">
+                <label for="room">Número de Habitación:</label>
+                <input type="number" id="room" name="room" placeholder="Número de habitación" required>
+            </div>
+            <div class="form-group">
+                <label>Selecciona tu café favorito:</label>
+                <input type="checkbox" id="espresso" name="coffee" value="espresso">
+                <label for="espresso">Espresso</label><br>
+                <input type="checkbox" id="latte" name="coffee" value="latte">
+                <label for="latte">Latte</label><br>
+                <input type="checkbox" id="capuccino" name="coffee" value="capuccino">
+                <label for="capuccino">Capuccino</label><br>
+                <input type="checkbox" id="moka" name="coffee" value="moka">
+                <label for="moka">Moka</label><br>
+            </div>
+            <button id="enviar" type="button">Enviar Pedido</button>
+        </form>
+    </div>
+</body>
+</html>
+
