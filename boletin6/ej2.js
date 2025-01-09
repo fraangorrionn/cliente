@@ -16,9 +16,9 @@ j. Añade para al elemento testdiv del documento.
 
 Comienza con un documento HTML que contenga un <div> con id testdiv.
  */
+window.addEventListener('load', inicializar);
 
-window.addEventListener('DOMContentLoaded', function() {
-
+function inicializar() {
     var para = document.createElement('p');
     
     var txt1 = document.createTextNode('Este es el ');
@@ -35,4 +35,5 @@ window.addEventListener('DOMContentLoaded', function() {
     para.appendChild(txt3);
 
     document.getElementById('testdiv').appendChild(para);
-});
+
+}
