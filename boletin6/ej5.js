@@ -1,6 +1,8 @@
 /*Crea un documento que contenga una tabla con al menos 20 filas y 20 columnas (sin copia-pega, usando bucles). Pon texto en las celdas, todo ello mediante DOM. */
 
-document.addEventListener('DOMContentLoaded', () => {
+window.addEventListener('load', inicializar);
+
+function inicializar(){
 
     const tabla = document.createElement('table');
     tabla.style.borderCollapse = 'collapse';
@@ -22,4 +24,4 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     document.body.appendChild(tabla);
-});
+}

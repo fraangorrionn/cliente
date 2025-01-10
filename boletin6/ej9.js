@@ -1,9 +1,10 @@
 /*Añade un evento al ejercicio anterior en el que si se hace click en la imagen se oculta toda la información relacionada con esa imagen,
 al hacer clic de nuevo en la imagen volverá a aparecer toda la información anteriormente ocultada. */
 
+window.addEventListener('load', inicializar);
 const viajes = [{src: "img/img1.jpg", desc: "descripcion1", specs: ["spec11", "spec12"]},{src: "img/img2.jpg", desc: "descripcion2", specs: ["spec21", "spec22"]},];
 
-document.addEventListener('DOMContentLoaded', () => {
+function inicializar(){
     const contenedorPrincipal = document.getElementById('todos-los-viajes');
 
     const subtitulo = document.createElement('h1');
@@ -69,4 +70,4 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     contenedorPrincipal.appendChild(listaPrincipal);
-});
+}

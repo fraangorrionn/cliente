@@ -1,6 +1,8 @@
 /*Usa DOM para crear dinámicamente un enlace link y pon sus atributos. Usa DOM para coger los atributos y mostrar su valor en un Div creado al efecto. */
 
-document.addEventListener('DOMContentLoaded', () => {
+window.addEventListener('load', inicializar);
+
+function inicializar(){
 
     const enlace = document.createElement('a');
     enlace.href = "https://www.ejemplo.com";
@@ -35,4 +37,4 @@ document.addEventListener('DOMContentLoaded', () => {
         enlace.setAttribute('title', 'Haz clic para visitar Ejemplo');
         mostrarAtributos();
     });
-});
+}

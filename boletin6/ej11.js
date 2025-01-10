@@ -17,7 +17,7 @@ function inicializar() {
     document.body.appendChild(enlace);
     document.body.appendChild(capa);
 
-    enlace.addEventListener('click', function (evento) {
+    enlace.addEventListener('click', function (evento){
         evento.preventDefault();
 
         let x = evento.clientX;

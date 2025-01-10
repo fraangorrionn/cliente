@@ -30,7 +30,9 @@ El siguiente código HTML:
 
 const viajes = [{src: "img/img1.jpg", desc: "descripcion1", specs: ["spec11", "spec12"]},{src: "img/img2.jpg", desc: "descripcion2", specs: ["spec21", "spec22"]},{src: "img/img3.jpg", desc: "descripcion3", specs: ["spec31", "spec32"]},];
 
-document.addEventListener('DOMContentLoaded', () => {
+window.addEventListener('load', inicializar);
+
+function inicializar(){
     const contenedorPrincipal = document.getElementById('todos-los-viajes');
 
     const subtitulo = document.createElement('h1');
@@ -64,7 +66,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     contenedorPrincipal.appendChild(listaPrincipal);
-});
+}
 
 
 
