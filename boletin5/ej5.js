@@ -1,40 +1,43 @@
 /* Realizar  un   formulario   para   envío   de   SMS   con   una   área   de   texto   de   145 caracteres como máximo, 
 no debe permitir escribir más. Sólo se permiten alfanuméricos y signos de puntuación. Se debe mostrar el número de caracteres
 permitidos que le quedan al usuario para poder escribir. */
-window.addEventListener('click', inicializar, false);
+window.addEventListener('load', inicializar);
 
 function inicializar() {
-    var textarea = document.getElementById("mensaje");
-    var contador = document.getElementById("contador");
+    // Crear el formulario
+    const formulario = document.createElement('form');
+    formulario.id = 'smsForm';
 
-    function actualizarContador() {
-        var caracteresRestantes = 145 - textarea.value.length;
-        contador.textContent = `Caracteres restantes: ${caracteresRestantes}`;
-    }
+    // Crear el área de texto
+    const areaTexto = document.createElement('textarea');
+    areaTexto.id = 'smsText';
+    areaTexto.maxLength = 145; // Máximo de caracteres
+    areaTexto.rows = 5;//numero de filas para que se vea mejor
+    areaTexto.placeholder = 'Escribe tu mensaje (máx. 145 caracteres)...';
+    formulario.appendChild(areaTexto);
 
-    textarea.addEventListener("input", (event) => {
+    // Crear el contador de caracteres
+    const contador = document.createElement('p');
+    contador.id = 'charCount';
+    contador.textContent = `Caracteres restantes: ${areaTexto.maxLength}`;
+    formulario.appendChild(contador);
 
-        var caracteresPermitidos = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.,!?¡¿()'\"-_:;@# ";
-        
-        var textoFiltrado = Array.from(textarea.value)
-            .filter(char => caracteresPermitidos.includes(char))
-            .join('');
+    // Agregar validación de caracteres al área de texto
+    areaTexto.addEventListener('input', () => {
+        const texto = areaTexto.value;
 
-        if (textoFiltrado !== textarea.value) {
-            textarea.value = textoFiltrado;
+        // Validar que sólo contenga caracteres alfanuméricos y signos de puntuación
+        const textoValidado = texto.replace(/[^a-zA-Z0-9.,!?;:()\-'" ]/g, '');
+        if (texto !== textoValidado) {
+            areaTexto.value = textoValidado;
         }
 
-        actualizarContador();
+        // Actualizar el contador de caracteres
+        contador.textContent = `Caracteres restantes: ${areaTexto.maxLength - textoValidado.length}`;
     });
 
-    document.getElementById("smsForm").addEventListener("submit", (event) => {
-        event.preventDefault();
-        alert("Mensaje enviado: " + textarea.value);
-        textarea.value = ""; 
-        actualizarContador();
-    });
-
-    actualizarContador();
+    // Añadir el formulario al body
+    document.body.appendChild(formulario);
 }
 
 

@@ -4,7 +4,6 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Formulario de Registro con Validación</title>
-        <script src="ej10.js"></script>
         <style>
             form {
                 max-width: 350px;
@@ -54,39 +53,6 @@
         </style>
     </head>
     <body>
-        <form id="registroForm">
-            <label for="nombre">Nombre</label>
-            <input type="text" id="nombre" name="nombre" placeholder="Nombre" required>
-            <span id="error_nombre" class="error" aria-live="polite"></span>
-
-            <label for="apellidos">Apellidos</label>
-            <input type="text" id="apellidos" name="apellidos" placeholder="Apellidos" required>
-            <span id="error_apellidos" class="error" aria-live="polite"></span>
-
-            <label for="usuario">Nombre de usuario</label>
-            <input type="text" id="usuario" name="usuario" placeholder="Nombre de usuario" required>
-            <span id="error_usuario" class="error" aria-live="polite"></span>
-
-            <label for="contraseña">Contraseña</label>
-            <input type="password" id="contraseña" name="contraseña" placeholder="Contraseña" required>
-            <span id="error_contraseña" class="error" aria-live="polite"></span>
-
-            <label for="confirmar_contraseña">Confirmar contraseña</label>
-            <input type="password" id="confirmar_contraseña" name="confirmar_contraseña" placeholder="Confirmar contraseña" required>
-            <span id="error_confirmar_contraseña" class="error" aria-live="polite"></span>
-
-            <label for="correo">Correo Electrónico</label>
-            <input type="email" id="correo" name="correo" placeholder="Correo Electrónico" required>
-            <span id="error_correo" class="error" aria-live="polite"></span>
-
-            <label for="movil">Teléfono Móvil</label>
-            <input type="text" id="movil" name="movil" placeholder="Móvil" pattern="\d{9}" title="Debe contener 9 dígitos numéricos" required>
-            <span id="error_movil" class="error" aria-live="polite"></span>
-
-            <input type="submit" value="Registrar">
-            <p class="error" id="errorMensaje" aria-live="polite"></p>
-
-            <input type="reset" value="Resetear">
-        </form>
+        <script src="ej10.js"></script>
     </body>
 </html>
