@@ -6,8 +6,8 @@ El formulario también debe tener un botón para ser enviado, pero este no se en
 si el código no se ha introducido correctamente. Además en el momento en que se
 envía el formulario, el código debe ser almacenado en el navegador de forma
 permanente sin necesidad de que pase por el servidor. */
-
-/*window.addEventListener('load', inicializar);
+//USANDO LOCALSTORAGE
+window.addEventListener('load', inicializar);
 
 function inicializar() {
     // Crear formulario dinámicamente
@@ -27,36 +27,24 @@ function inicializar() {
     // Crear mensaje de validación
     const mensajeError = document.createElement('p');
     mensajeError.id = 'mensaje-error';
+    mensajeError.style.color = 'red';
     mensajeError.style.display = 'none';
 
     // Validar formato del código al salir del campo
-    inputCodigo.addEventListener('blur', () => {
-        const regex = /^[A-Z]{3}-\d{1,5}$/; // Tres letras, guion y 1-5 números
-        if (!regex.test(inputCodigo.value)) {
-            mensajeError.textContent = 'El código debe tener el formato: tres letras, guión y de 1 a 5 números (Ej: ASX-23).';
-            mensajeError.style.display = 'block';
-        } else {
-            mensajeError.style.display = 'none';
-        }
-    });
+    inputCodigo.addEventListener('blur', () => validarCodigo(inputCodigo, mensajeError));
 
     // Crear botón de envío
     const botonEnviar = document.createElement('button');
     botonEnviar.type = 'submit';
     botonEnviar.textContent = 'Enviar';
 
-    // Evitar envío si el código no es válido
+    // Evitar envío si el código no es válido y almacenar en localStorage
     formulario.addEventListener('submit', (e) => {
         e.preventDefault();
-        const regex = /^[A-Z]{3}-\d{1,5}$/;
-        if (!regex.test(inputCodigo.value)) {
-            mensajeError.textContent = 'Por favor, introduce un código válido antes de enviar.';
-            mensajeError.style.display = 'block';
-        } else {
-            mensajeError.style.display = 'none';
-            localStorage.setItem('codigoProducto', inputCodigo.value);
+        if (validarCodigo(inputCodigo, mensajeError)) {
+            localStorage.setItem('codigoProducto', inputCodigo.value.trim()); // Guardar en localStorage
             alert('Código guardado correctamente en el navegador.');
-            //formulario.reset();
+            formulario.reset();
         }
     });
 
@@ -68,8 +56,34 @@ function inicializar() {
 
     // Añadir formulario al cuerpo del documento
     document.body.appendChild(formulario);
-}*/
 
+    // Mostrar código almacenado en localStorage (si existe)
+    const codigoGuardado = localStorage.getItem('codigoProducto');
+    if (codigoGuardado) {
+        const mensajeGuardado = document.createElement('p');
+        mensajeGuardado.textContent = `Código almacenado: ${codigoGuardado}`;
+        mensajeGuardado.style.color = 'green';
+        mensajeGuardado.style.fontWeight = 'bold';
+        document.body.appendChild(mensajeGuardado);
+    }
+}
+
+// Función para validar el formato del código
+function validarCodigo(input, mensajeError) {
+    const regex = /^[A-Z]{3}-\d{1,5}$/; // Tres letras, guion y 1-5 números
+    if (!regex.test(input.value.trim())) {
+        mensajeError.textContent = 'El código debe tener el formato: tres letras, guión y de 1 a 5 números (Ej: ASX-23).';
+        mensajeError.style.display = 'block';
+        return false;
+    } else {
+        mensajeError.style.display = 'none';
+        return true;
+    }
+}
+
+/*
+
+//USANDO COOKIE
 window.addEventListener('load', inicializar);
 
 function inicializar() {
@@ -132,4 +146,24 @@ function inicializar() {
 
     // Añadir formulario al cuerpo del documento
     document.body.appendChild(formulario);
+
+    // Verificar y mostrar el código almacenado en cookies
+    const codigoGuardado = leerCookie('codigoProducto');
+    if (codigoGuardado) {
+        alert(`El código almacenado es: ${codigoGuardado}`);
+    }
 }
+
+// Función para leer el valor de una cookie
+function leerCookie(nombre) {
+    const cookies = document.cookie.split('; ');
+    for (const cookie of cookies) {
+        const [key, value] = cookie.split('=');
+        if (key === nombre) {
+            return value;
+        }
+    }
+    return null;
+}
+
+*/
