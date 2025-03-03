@@ -22,11 +22,11 @@ console.log(aula.imprimirAlumnos());
 
 // Buscar un alumno por DNI
 console.log("\nBuscar alumno por DNI (24515987B):");
-console.log(aula.buscarAlumnoPorDNI("24515987B"));  // Asegúrate de que el DNI esté en el formato adecuado
+console.log(aula.buscarAlumnoPorDni("24515987B"));  // Asegúrate de que el DNI esté en el formato adecuado
 
 // Ordenar las notas de un alumno
 console.log("\nOrdenar notas de alumno (31548976A):");
-console.log(aula.ordenarNotasDeAlumno("31548976A"));
+console.log(aula.ordenarNotasAlumno("24515987B"));
 
 // Ordenar alumnos por apellido
 console.log("\nAlumnos ordenados por apellido:");

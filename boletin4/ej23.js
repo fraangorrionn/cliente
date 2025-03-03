@@ -11,18 +11,15 @@ modulos.set("DWS", { duracion: 16, numAlumnos: 16 });
 modulos.set("DAW", { duracion: 10, numAlumnos: 11 });
 modulos.set("DWES", { duracion: 18, numAlumnos: 18 });
 
-if (modulos.has("DWS")) {
-    const dwsInfo = modulos.get("DWS");
-    alert(`El número de alumnos matriculados en el módulo "DWS" es: ${dwsInfo.numAlumnos}`);
-} else {
-    alert("El módulo 'DWS' no existe.");
+if (modulos.has("DWS")){
+    let dwsInfo = modulos.get("DWS");
+    alert(`numero de alumnos en DWS: ${dwsInfo.numAlumnos}`);
 }
 
-let totalAlumnos = 0;
+var totalAlumnos = 0;
+
 modulos.forEach((info) => {
     totalAlumnos += info.numAlumnos;
 });
 
 alert(`El número total de alumnos matriculados en todos los módulos es: ${totalAlumnos}`);
-
-

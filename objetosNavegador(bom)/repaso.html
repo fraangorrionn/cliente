@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Publicidad - Nombre de Usuario</title>
+    <style>
+        /* Estilos para el pop-up */
+        .popup {
+            position: fixed;
+            bottom: 10px;
+            right: 10px;
+            padding: 10px;
+            background-color: #ffcc00;
+            border: 1px solid #000;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            font-family: Arial, sans-serif;
+            display: none;
+        }
+
+        /* Estilos básicos para la página */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+        h1 {
+            margin-top: 50px;
+        }
+
+        p {
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Bienvenido a la Publicidad Interactiva</h1>
+    <p>Por favor, ingresa un nombre de usuario de 7 caracteres para ver el producto del año.</p>
+    <script>
+        // Función que solicita el nombre de usuario hasta que cumpla con el requisito de longitud
+        function solicitarNombreUsuario() {
+            let nombreUsuario = prompt("Introduce un nombre de usuario de exactamente 7 caracteres:");
+            
+            // Verificar que el nombre de usuario tiene exactamente 7 caracteres
+            while (nombreUsuario.length !== 7) {
+                nombreUsuario = prompt("El nombre de usuario debe tener exactamente 7 caracteres. Intenta de nuevo:");
+            }
+
+            return nombreUsuario;
+        }
+
+        // Función que muestra un pop-up cada 5 segundos
+        function mostrarPopUp(digitos, usuario) {
+            let contador = 0;
+
+            // Intervalo que se ejecuta cada 5 segundos
+            let intervalo = setInterval(() => {
+                if (contador < digitos) {
+                    // Crear y mostrar el pop-up
+                    let popup = document.createElement('div');
+                    popup.className = 'popup';
+                    popup.textContent = `Hola ${usuario}. Aquí tienes el producto del año. ¡Atrévete a probarlo!`;
+
+                    document.body.appendChild(popup);
+
+                    // Mostrar el pop-up por 3 segundos
+                    setTimeout(() => {
+                        popup.remove();  // Eliminar el pop-up después de 3 segundos
+                    }, 3000);
+
+                    contador++;
+                } else {
+                    clearInterval(intervalo);  // Detener el intervalo después de mostrar los pop-ups necesarios
+                }
+            }, 5000); // Cada 5 segundos
+        }
+
+        // Principal ejecución del script
+        const usuario = solicitarNombreUsuario();  // Solicitar el nombre de usuario
+        const digitos = usuario.length;  // Obtener la cantidad de caracteres del nombre de usuario
+        mostrarPopUp(digitos, usuario);  // Mostrar el pop-up el número de veces que corresponda
+    </script>
+</body>
+</html>

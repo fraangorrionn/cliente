@@ -4,7 +4,7 @@
 
   let modulos = ["Matemáticas", "Lengua", "Ciencias"];
 
-  let alumno1 = new Alumno("Fran", "24515987b", "2º ESO", [7, 9, 9]);
+  let alumno1 = new Alumno("Fran", "Rivera", "24515987b", "2º ESO", [7, 9, 9]);
   
   // Imprimir el alumno
   console.log(alumno1.imprimir());

@@ -18,34 +18,35 @@ modulos.set("DWES", "Desarrollo Web en Entorno Servidor");
 
 alert(`Hay ${modulos.size} módulos almacenados.`);
 
-let contenido = "Contenido de los módulos:\n";
-modulos.forEach((descripcion, codigo) => {
-    contenido += `${codigo}: ${descripcion}\n`;
+var contenido = "contenido de los modulos: \n";
+
+modulos.forEach((clave, descripcion) => {
+    contenido += `${clave}, ${descripcion}\n`;
 });
 alert(contenido);
 
-let abreviaturas = "Abreviaturas de los módulos:\n";
-for (let [abreviacion] of modulos) {
-    abreviaturas += `${abreviacion}\n`;
+var abreviaturas = "abreviaturas de los modulos: \n";
+for(let [clave] of modulos){
+    abreviaturas += `${clave}\n`;
 }
 alert(abreviaturas);
 
-let nombresCompletos = "Nombres completos de los módulos:\n";
-for (let [_, completo] of modulos) {
-    nombresCompletos += `${completo}\n`;
+var nombresCompletos = "nombres completos de los modulos: \n";
+for(let [_, descripcion] of modulos){
+    nombresCompletos += `${descripcion}\n`;
 }
 alert(nombresCompletos);
 
-if (modulos.has("DAW")) {
-    alert("El módulo 'DAW' existe. Se procederá a eliminarlo.");
+if(modulos.has("DAW")){
+    alert("El modulo daw sera eliminado")
     modulos.delete("DAW");
-} else {
-    alert("El módulo 'DAW' no existe.");
+}else{
+    alert("el modulo DAW no existe");
 }
 
-const modulosOrdenados = new Map([...modulos.entries()].sort());
-let contenidoOrdenado = "Contenido de los módulos (ordenados):\n";
-modulosOrdenados.forEach((descripcion, codigo) => {
-    contenidoOrdenado += `${codigo}: ${descripcion}\n`;
+var modulosOrdenados = new Map([...modulos.entries()].sort());
+let contenidoOrdenado = "contenido de los modulos ordenados: \n";
+modulosOrdenados.forEach((clave, descripcion) => {
+    contenidoOrdenado += `${clave}, ${descripcion}\n`;
 });
 alert(contenidoOrdenado);

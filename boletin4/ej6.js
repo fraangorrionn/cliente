@@ -23,5 +23,3 @@ const sumarFlecha = (...numeros) => {
 
 alert(sumarFlecha(1, 2, 3, 4));
 alert(sumarFlecha(10, 20, 30));
-
-
